@@ -1,0 +1,12 @@
+<div class="card-container">
+    <img [src]="game.imageUrl" alt="image">
+    <h3>{{game.title}}</h3>
+    <p>{{game.description}}</p>
+
+    <div>
+        Leave a review
+        <input type="text" [(ngModel)]="review"> <!-- Two-way data binding for the review input -> [()] -->
+        <button (click)="clearReview()">Clear</button>
+    </div>
+
+</div>
