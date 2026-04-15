@@ -1,0 +1,28 @@
+<p>games-page works!</p>
+<a [routerLink]="''">Go to dashboard</a>
+
+<p>Best game: {{ bestGame()?.title }}</p>
+<p>Wishlist: {{ wishlistGame()?.title }}</p>
+<p>Cart: {{ cartGame()?.title }}</p>
+
+<div>
+  @for (
+    card of cards;
+    track card;
+    let i = $index;
+    let isFirst = $first;
+    let isLast = $last;
+    let isEven = $even;
+    let isOdd = $odd
+  ) {
+    <span>{{ i }} {{ isFirst }} {{ isLast }} {{ isEven }} {{ isOdd }}</span>
+    <div class="game-card-container" [class.first]="isFirst" [ngClass]="{ last: isLast }">
+      <!-- Add 'first' class to the first card -->
+      @if (card.isVisible) {
+        <app-game-card [game]="card" (bestGameEvent)="setBestGame($event)"></app-game-card>
+      } @else {
+        <span>Card {{ i }} is hidden</span>
+      }
+    </div>
+  }
+</div>
